@@ -131,7 +131,7 @@ if [[ $(command -v lsd) ]]; then
 fi
 
 # Replace VSCode with pure FOSS alternative
-if [[ $(command -v codium)]] && [[ ! $(command -v code) ]]; then
+if [[ $(command -v codium) ]] && [[ ! $(command -v code) ]]; then
   alias code="codium"
 fi
 
