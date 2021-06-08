@@ -118,6 +118,9 @@ alias zshconfig="$EDITOR ~/.zshrc"
 alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
 alias zshrefresh="source ~/.zshrc"
 
+# Dotfiles sync command
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
 # Replace cat with bat
 if [[ $(command -v bat) ]]; then
   alias cat="bat"
