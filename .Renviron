@@ -1,0 +1,2 @@
+## Change library to constant location for all R 4.x versions
+R_LIBS=~/R/library
