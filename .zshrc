@@ -81,6 +81,10 @@ export PATH="$HOME/.n/bin:$PATH"
 eval "$(direnv hook zsh)"
 # <<< direnv initalize <<<
 
+# >>> homebrew initalize >>>
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# <<< homebrew initalize <<<
+
 # Tell Antigen that you're done
 antigen apply
 
@@ -128,6 +132,12 @@ fi
 # Replace ls with lsd
 if [[ $(command -v lsd) ]]; then
   alias ls="lsd"
+fi
+
+# Add notification support for long-running processes
+if [[ $(command -v ntfy) ]]; then
+  eval "$(ntfy shell-integration)"
+  export AUTO_NTFY_DONE_IGNORE="vim nano zshconfig screen tmux ssh top htop less more most nethogs 'singularity shell' julia"
 fi
 
 # Replace VSCode with pure FOSS alternative
