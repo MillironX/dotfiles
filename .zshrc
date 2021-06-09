@@ -31,10 +31,14 @@ antigen bundle millironx/cowsay-cows
 
 DEFAULT_USER="$USER"
 
-# Theming: the logic is: if I'm on Fedora, I'm on my on machine, and have all my fancy tools,
-# If not, I'm on a server and may or may not have Powerline fonts, so I need to pick
+# Theming: if I have a nerd fond, use it to the fullest extent possible
+# If not, check for basic powerline, then fall back to text-based
+# The presence of nerd fonts and/or powerline fonts will be designated
+# by the presence of a ".nf" and ".powerline" file in the home directory,
+# respectively
 source /etc/os-release
-if [[ "$ID" == "fedora" ]]; then
+if [[ -f "$HOME/.nf" ]]; then
+  # Nerd font config flag set
   antigen theme romkatv/powerlevel10k
 else
   if [[ -f "$HOME/.powerline" ]]; then
