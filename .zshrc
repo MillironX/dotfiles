@@ -129,6 +129,11 @@ alias zshrefresh="source ~/.zshrc"
 # Dotfiles sync command
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
+# Check for Ubuntu's name for bat
+if [[ $(command -v batcat) ]]; then
+  alias bat="batcat"
+fi
+
 # Replace cat with bat
 if [[ $(command -v bat) ]]; then
   alias cat="bat"
