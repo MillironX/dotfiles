@@ -27,6 +27,8 @@ antigen bundle extract
 # Custom bundles
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-completions
+antigen bundle esc/conda-zsh-completion
 antigen bundle millironx/cowsay-cows
 
 DEFAULT_USER="$USER"
@@ -86,6 +88,7 @@ eval "$(direnv hook zsh)"
 # <<< direnv initalize <<<
 
 # >>> homebrew initalize >>>
+export fpath=(/home/linuxbrew/.linuxbrew/share/zsh/site-functions $fpath)
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # <<< homebrew initalize <<<
 
@@ -94,6 +97,7 @@ antigen apply
 
 # User configuration
 # Setup bash completion support
+# (zsh completion support is handled by oh-my-zsh)
 autoload -U bashcompinit
 bashcompinit
 
@@ -128,6 +132,11 @@ alias zshrefresh="source ~/.zshrc"
 
 # Dotfiles sync command
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
+# Check for Ubuntu's name for bat
+if [[ $(command -v batcat) ]]; then
+  alias bat="batcat"
+fi
 
 # Replace cat with bat
 if [[ $(command -v bat) ]]; then
