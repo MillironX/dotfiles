@@ -86,6 +86,7 @@ eval "$(direnv hook zsh)"
 # <<< direnv initalize <<<
 
 # >>> homebrew initalize >>>
+export fpath=/home/linuxbrew/.linuxbrew/share/zsh/site-functions:$fpath
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # <<< homebrew initalize <<<
 
@@ -93,9 +94,6 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 antigen apply
 
 # User configuration
-# Setup bash completion support
-autoload -U bashcompinit
-bashcompinit
 
 # Add pipx packages to PATH
 export PATH="$PATH:$HOME/.local/bin"
@@ -162,6 +160,12 @@ alias please='sudo $(fc -ln -1)'
 
 # Make running programs on the GPU less painful
 alias nrun='__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia __VK_LAYER_NV_optimus="NVIDIA_only"'
+
+# Setup completion support
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:]}={[:upper:]}'
+autoload -Uz compinit && compinit
+autoload -U bashcompinit
+bashcompinit
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
