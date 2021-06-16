@@ -158,5 +158,7 @@ alias please='sudo $(fc -ln -1)'
 # Make running programs on the GPU less painful
 alias nrun='__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia __VK_LAYER_NV_optimus="NVIDIA_only"'
 
+export GPG_TTY=$(tty)
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
