@@ -6,9 +6,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Load the antigen library
-if [[ ! -f "$HOME/antigen.zsh" ]]; then
-  curl -L git.io/antigen > $HOME/antigen.zsh
-fi
 source "$HOME/antigen.zsh"
 
 # Load the oh-my-zsh library
@@ -27,30 +24,16 @@ antigen bundle extract
 # Custom bundles
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-completions
-antigen bundle esc/conda-zsh-completion
 antigen bundle millironx/cowsay-cows
 
-DEFAULT_USER="$USER"
-
-# Theming: if I have a nerd fond, use it to the fullest extent possible
-# If not, check for basic powerline, then fall back to text-based
-# The presence of nerd fonts and/or powerline fonts will be designated
-# by the presence of a ".nf" and ".powerline" file in the home directory,
-# respectively
-source /etc/os-release
-if [[ -f "$HOME/.nf" ]]; then
-  # Nerd font config flag set
-  antigen theme romkatv/powerlevel10k
-else
-  if [[ -f "$HOME/.powerline" ]]; then
-    # Powerline config flag set
-    antigen theme https://gist.github.com/e95df0a0aa6d1721e85b905399971515.git believer
-  else
-    # Powerline config flag not set
-    antigen theme https://gist.github.com/efde5e8d507bd3e1e046198b69d579f8.git gianu-improved
-  fi
-fi
+# Theming: the logic is: if I'm on Fedora, I'm on my on machine, and have all my fancy tools,
+# If not, I'm on a server and may or may not have Powerline fonts, so I need to pick
+#source /etc/os-release
+#if [[ "$ID" == "fedora" ]]; then
+antigen theme romkatv/powerlevel10k
+#else
+#  antigen theme https://gist.github.com/e95df0a0aa6d1721e85b905399971515.git believer
+#fi
 
 # oh-my-zsh configuration settings
 HYPHEN_INSENSITIVE="true"
@@ -87,27 +70,10 @@ export PATH="$HOME/.n/bin:$PATH"
 eval "$(direnv hook zsh)"
 # <<< direnv initalize <<<
 
-# >>> homebrew initalize >>>
-export fpath=(/home/linuxbrew/.linuxbrew/share/zsh/site-functions $fpath)
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-# <<< homebrew initalize <<<
-
 # Tell Antigen that you're done
 antigen apply
 
 # User configuration
-# Setup bash completion support
-# (zsh completion support is handled by oh-my-zsh)
-autoload -U bashcompinit
-bashcompinit
-
-# Add pipx packages to PATH
-export PATH="$PATH:$HOME/.local/bin"
-# Enable pipx completions
-if [[ $(command -v pipx) ]]; then
-  eval "$(register-python-argcomplete pipx)"
-fi
-
 # Preferred editor for local and remote sessions
 if [[ $(command -v nano) ]]; then
   export EDITOR=nano
@@ -118,25 +84,16 @@ if [[ $(command -v most) ]]; then
   export PAGER=most
 fi
 
-# Fix screen wrapping if on a local terminal
-# (Will cause problems if set twice, i.e. in
-# both local and remote sessions)
-if [ ! -n "$SSH_CONNECTION" ]; then
-  ZLE_RPROMPT_INDENT=0
-fi
+# Add pipx packages to PATH
+export PATH="$PATH:$HOME/.local/bin"
+
+# Fix screen wrapping
+# ZLE_RPROMPT_INDENT=0
 
 # Personal aliases
 alias zshconfig="$EDITOR ~/.zshrc"
 alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
 alias zshrefresh="source ~/.zshrc"
-
-# Dotfiles sync command
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-
-# Check for Ubuntu's name for bat
-if [[ $(command -v batcat) ]]; then
-  alias bat="batcat"
-fi
 
 # Replace cat with bat
 if [[ $(command -v bat) ]]; then
@@ -150,24 +107,30 @@ if [[ $(command -v lsd) ]]; then
   alias ls="lsd"
 fi
 
-# Add notification support for long-running processes
-if [[ $(command -v ntfy) ]]; then
-  eval "$(ntfy shell-integration)"
-  export AUTO_NTFY_DONE_IGNORE="vim nano zshconfig screen tmux ssh top htop less more most nethogs 'singularity shell' julia"
-fi
-
 # Replace VSCode with pure FOSS alternative
-if [[ $(command -v codium) ]] && [[ ! $(command -v code) ]]; then
+if [[ $(command -v codium) ]]; then
   alias code="codium"
 fi
 
 # Make forgetting sudo less painful
 alias please='sudo $(fc -ln -1)'
 
+# Make and change directories in one easy step
+# nd = New Directory
+nd () {
+  mkdir "$1"
+  cd "$1"
+}
+
 # Make running programs on the GPU less painful
 alias nrun='__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia __VK_LAYER_NV_optimus="NVIDIA_only"'
 
-export GPG_TTY=$(tty)
+# Add notification support for long-running processes
+if [[ $(command -v ntfy) ]]; then
+  eval "$(ntfy shell-integration)"
+  export AUTO_NTFY_DONE_IGNORE="vim nano zshconfig screen tmux ssh top htop less more most nethogs 'singularity shell' julia"
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
