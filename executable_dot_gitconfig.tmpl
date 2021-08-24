@@ -1,0 +1,20 @@
+[user]
+	name = {{ .name }}
+	email = {{ .email }}
+	signingkey = {{ .pubkey }}
+[core]
+	editor = nano
+[credential]
+	helper = store
+[color]
+	ui = auto
+[init]
+	defaultBranch = master
+[github]
+	user = MillironX
+{{- if eq .chezmoi.osRelease.id "fedora" }}
+[diff]
+	tool = kdiff3
+[merge]
+	tool = kdiff3
+{{- end }}
