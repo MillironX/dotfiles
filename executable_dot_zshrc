@@ -89,8 +89,6 @@ antigen apply
 autoload -U bashcompinit
 bashcompinit
 
-# Add pipx packages to PATH
-export PATH="$PATH:$HOME/.local/bin"
 # Enable pipx completions
 if [[ $(command -v pipx) ]]; then
   eval "$(register-python-argcomplete pipx)"
