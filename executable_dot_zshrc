@@ -127,30 +127,14 @@ if [ ! -n "$SSH_CONNECTION" ]; then
   ZLE_RPROMPT_INDENT=0
 fi
 
-# Personal aliases
 alias zshconfig="$EDITOR ~/.zshrc"
-alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
-alias zshrefresh="source ~/.zshrc"
-
-# Dotfiles sync command
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-
-# Check for Ubuntu's name for bat
-if [[ $(command -v batcat) ]]; then
-  alias bat="batcat"
-fi
+source $HOME/.aliases
 
 # Replace cat with bat
 if [[ $(command -v bat) ]]; then
-  alias cat="bat"
   export BAT_PAGER="less -RF"
   export MANPAGER="sh -c 'col -bx | bat -l man -p'"
   export MANROFFOPT="-c"
-fi
-
-# Replace ls with lsd
-if [[ $(command -v lsd) ]]; then
-  alias ls="lsd"
 fi
 
 # Add notification support for long-running processes
@@ -158,24 +142,6 @@ if [[ $(command -v ntfy) ]]; then
   eval "$(ntfy shell-integration --longer-than 30)"
   export AUTO_NTFY_DONE_IGNORE="vim nano emacs zshconfig screen tmux ssh top htop less more most nethogs 'singularity shell' julia man"
 fi
-
-# Replace VSCode with pure FOSS alternative
-if [[ $(command -v codium) ]] && [[ ! $(command -v code) ]]; then
-  alias code="codium"
-fi
-
-# Make forgetting sudo less painful
-alias please='sudo $(fc -ln -1)'
-
-# Make and change directories in one easy step
-# nd = New Directory
-nd () {
-  mkdir "$1"
-  cd "$1"
-}
-
-# Make running programs on the GPU less painful
-alias nrun='__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia __VK_LAYER_NV_optimus="NVIDIA_only"'
 
 # Set the Nextflow enviroment caches
 export NXF_HOME="$HOME/.nextflow"

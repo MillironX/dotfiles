@@ -1,0 +1,30 @@
+# Only create aliases if the underlying programs are available
+# This allows portability between machines in different states
+alias_if_exists () {
+  ALIAS=${1}
+  COMMAND=${2}
+  ARGS=${3}
+  if [ $(command -v $COMMAND) ]; then
+    if [ -n "$ARGS" ]; then
+      alias $ALIAS="$COMMAND $ARGS"
+    else
+      alias $ALIAS="$COMMAND"
+    fi
+  fi
+}
+
+# Context-sensitive aliases
+alias_if_exists config git '--git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias_if_exists bat batcat
+alias_if_exists cat bat
+alias_if_exists ls lsd
+
+# Universal aliases
+alias please='sudo $(fc -ln -1)'
+alias nrun='__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia __VK_LAYER_NV_optimus="NVIDIA_only"'
+
+# Alias-like functions
+nd () {
+  mkdir "$1"
+  cd "$1"
+}
