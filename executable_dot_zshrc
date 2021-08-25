@@ -80,11 +80,6 @@ unset __conda_setup
 eval "$(direnv hook zsh)"
 # <<< direnv initalize <<<
 
-# >>> homebrew initalize >>>
-export fpath=(/home/linuxbrew/.linuxbrew/share/zsh/site-functions $fpath)
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-# <<< homebrew initalize <<<
-
 # Tell Antigen that you're done
 antigen apply
 
