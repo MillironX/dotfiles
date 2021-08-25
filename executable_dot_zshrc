@@ -5,6 +5,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+if [ -f "$HOME/.modules" ]; then
+  source $HOME/.modules
+fi
+
 # Load the antigen library
 if [[ ! -f "$HOME/.antigen.zsh" ]]; then
   curl -L git.io/antigen > $HOME/.antigen.zsh
