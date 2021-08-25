@@ -104,13 +104,6 @@ if [[ $(command -v most) ]]; then
   export PAGER=most
 fi
 
-# Fix screen wrapping if on a local terminal
-# (Will cause problems if set twice, i.e. in
-# both local and remote sessions)
-if [ ! -n "$SSH_CONNECTION" ]; then
-  ZLE_RPROMPT_INDENT=0
-fi
-
 alias zshconfig="$EDITOR ~/.zshrc"
 source $HOME/.aliases
 
