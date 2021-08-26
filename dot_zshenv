@@ -1,0 +1,10 @@
+# Linuxbrew setup
+if [ -d $HOME/../linuxbrew/.linuxbrew ]; then
+  BREWPATH=$HOME/../linuxbrew/.linuxbrew
+elif [ -d $HOME/.linuxbrew ]; then
+  BREWPATH=$HOME/.linuxbrew
+fi
+
+if [ -n "$BREWPATH" ]; then
+  export fpath+=($BREWPATH/share/zsh/site-functions)
+fi
