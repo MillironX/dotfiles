@@ -12,8 +12,5 @@ elif [ -d $HOME/.linuxbrew ]; then
 fi
 
 if [ -n "$BREWPATH" ]; then
-  if [[ "$SHELL" =~ "zsh" ]]; then
-    export fpath+=($BREWPATH/share/zsh/site-functions)
-  fi
   eval "$($BREWPATH/bin/brew shellenv)"
 fi
