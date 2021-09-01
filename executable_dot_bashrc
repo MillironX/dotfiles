@@ -32,7 +32,9 @@ conda config --set changeps1 true
 # <<< conda initialize <<<
 
 # >>> direnv initalize >>>
-eval "$(direnv hook bash)"
+if [ $(command -v direnv) ]; then
+  eval "$(direnv hook bash)"
+fi
 # <<< direnv initalize <<<
 
 source $HOME/.envvar
