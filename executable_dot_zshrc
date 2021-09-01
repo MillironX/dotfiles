@@ -81,7 +81,9 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 # >>> direnv initalize >>>
-eval "$(direnv hook zsh)"
+if [ $(command -v direnv) ]; then
+  eval "$(direnv hook zsh)"
+fi
 # <<< direnv initalize <<<
 
 # Tell Antigen that you're done
