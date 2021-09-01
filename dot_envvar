@@ -21,20 +21,20 @@ elif [ $(command -v emacs) ]; then
 fi
 
 # Set a cool new pager with color support
-if [[ $(command -v most) ]]; then
+if [ $(command -v most) ]; then
   export PAGER=most
 fi
 
 
 # Replace cat with bat
-if [[ $(command -v bat) ]]; then
+if [ $(command -v bat) ]; then
   export BAT_PAGER="less -RF"
   export MANPAGER="sh -c 'col -bx | bat -l man -p'"
   export MANROFFOPT="-c"
 fi
 
 # Add notification support for long-running processes
-if [[ $(command -v ntfy) ]]; then
+if [ $(command -v ntfy) ]; then
   eval "$(ntfy shell-integration --longer-than 30)"
   export AUTO_NTFY_DONE_IGNORE="vim nano emacs kate zshconfig screen tmux ssh top htop less more most nethogs 'singularity shell' julia man"
 fi
