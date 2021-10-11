@@ -39,5 +39,7 @@ fi
 
 source $HOME/.envvar
 
+source $(which env_parallel.bash)
+
 # Make the prompt pretty, just in case we're stuck in bash land
 export PS1="[\[\e[32m\]\u\[\e[m\]@\[\e[33m\]\h\[\e[m\] \[\e[34m\]\W\[\e[m\]] \\$ "
