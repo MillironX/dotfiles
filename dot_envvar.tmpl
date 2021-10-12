@@ -57,3 +57,6 @@ NXF_CACHE=/90daydata/share/$USER/.singularity
 
 # Give Julia full CPU access
 export JULIA_NUM_THREADS=$(nproc)
+
+# Make NCBI happy
+export NCBI_API_KEY='{{ (bitwarden "item" "7d42eba0-c256-4d3b-8d0e-adbf016a08f8").login.password }}'
