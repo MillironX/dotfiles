@@ -13,4 +13,6 @@ fi
 
 if [ -n "$BREWPATH" ]; then
   eval "$($BREWPATH/bin/brew shellenv)"
+  export HOMEBREW_MAKE_JOBS=1
+  export HOMEBREW_NO_ANALYTICS=1
 fi
