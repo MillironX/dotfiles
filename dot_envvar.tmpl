@@ -52,7 +52,7 @@ export NXF_CHARLIECLOUD_CACHEDIR="$NXF_CACHE/charlie"
 
 {{ if (eq .cluster "scinet") }}
 # Set the Singularity image cache
-SINGULARITY_CACHEDIR=/90daydata/share/$USER/.singularity
+export SINGULARITY_CACHEDIR=/90daydata/share/$USER/.singularity
 {{ end }}
 
 # Give Julia full CPU access
