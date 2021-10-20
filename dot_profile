@@ -1,8 +1,6 @@
 # shellcheck shell=sh
 # User specific environment
-if ! [ "$(expr "$PATH" : "$HOME/.local/bin:$HOME/bin:")" ];then
-  export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
-fi
+export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 
 # Linuxbrew setup
 if [ -d $HOME/../linuxbrew/.linuxbrew ]; then

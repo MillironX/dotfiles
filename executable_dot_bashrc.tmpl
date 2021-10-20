@@ -14,7 +14,7 @@ fi
 {{ if (eq .chezmoi.osRelease.versionID "7") }}
 # Switch to zsh if interactive, and we haven't been told not to
 if [[ ($- == *i*) && ($SSH_TTY) && (-z $NO_ZSH) ]]; then
-  export SHELL=$(which zsh)
+  export SHELL=$(command -v zsh)
   exec $SHELL -l
 fi
 {{ end }}
