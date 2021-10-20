@@ -1,9 +1,6 @@
 # shellcheck shell=bash
 # .bashrc
 
-# Source login shell
-source "${HOME}/.bash_profile"
-
 # shellcheck disable=1054,1073,1050,1072,1009
 {{ if (eq .chezmoi.osRelease.id "centos") }}
 {{ if (eq .chezmoi.osRelease.versionID "7") }}

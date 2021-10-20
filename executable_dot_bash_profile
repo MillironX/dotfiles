@@ -1,3 +1,4 @@
 # shellcheck shell=bash
 # shellcheck source=dot_profile
 source "${HOME}/.profile"
+source "${HOME}/.bashrc"
