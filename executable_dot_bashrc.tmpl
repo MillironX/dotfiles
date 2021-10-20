@@ -4,11 +4,6 @@
 # Source login shell
 source "${HOME}/.bash_profile"
 
-# Source global definitions
-if [ -f /etc/bashrc ]; then
-    source /etc/bashrc
-fi
-
 # shellcheck disable=1054,1073,1050,1072,1009
 {{ if (eq .chezmoi.osRelease.id "centos") }}
 {{ if (eq .chezmoi.osRelease.versionID "7") }}
