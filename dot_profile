@@ -1,7 +1,7 @@
+# shellcheck shell=sh
 # User specific environment
-if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
-then
-    export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+if ! [ "$(expr "$PATH" : "$HOME/.local/bin:$HOME/bin:")" ];then
+  export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
 
 # Linuxbrew setup
