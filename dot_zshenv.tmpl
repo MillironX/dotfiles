@@ -1,4 +1,19 @@
 # shellcheck shell=zsh
+
+{{- if (eq .cluster "scinet") -}}
+# Workaround for SCINet admins clobbering fpath
+ZEXECDIR=$(dirname $(command -v zsh))
+if [ -d $ZEXECDIR/../share/zsh/functions ]; then
+  fpath+=$(realpath $ZEXECDIR/../share/zsh/functions)
+else
+  for ZSHAREDIR in $ZEXECDIR/../share/zsh/*; do
+    if [ -d $ZSHAREDIR/functions ]; then
+      fpath+=$(realpath $ZSHAREDIR/functions)
+    fi
+  done
+fi
+{{- end -}}
+
 # Linuxbrew setup
 if [ -d $HOME/../linuxbrew/.linuxbrew ]; then
   BREWPATH=$HOME/../linuxbrew/.linuxbrew
