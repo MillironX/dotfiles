@@ -1,18 +1,9 @@
-# shellcheck shell=zsh
+# shellcheck shell=bash
 
-{{- if (eq .cluster "scinet") -}}
+{{ if (or (eq .chezmoi.hostname "Atlas-login-1") (eq .chezmoi.hostname "Atlas-login-2")) -}}
 # Workaround for SCINet admins clobbering fpath
-ZEXECDIR=$(dirname $(command -v zsh))
-if [ -d $ZEXECDIR/../share/zsh/functions ]; then
-  fpath+=$(realpath $ZEXECDIR/../share/zsh/functions)
-else
-  for ZSHAREDIR in $ZEXECDIR/../share/zsh/*; do
-    if [ -d $ZSHAREDIR/functions ]; then
-      fpath+=$(realpath $ZSHAREDIR/functions)
-    fi
-  done
-fi
-{{- end -}}
+fpath+=($HOME/.local/share/zsh/5.8/functions)
+{{- end }}
 
 # Linuxbrew setup
 if [ -d $HOME/../linuxbrew/.linuxbrew ]; then
