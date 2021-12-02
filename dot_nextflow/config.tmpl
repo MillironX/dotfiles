@@ -4,6 +4,7 @@ tower {
 }
 {{ if (eq .cluster "scinet") }}
 process {
+  scratch        = true
   executor       = 'slurm'
   clusterOptions = '--account=fabadru'
   {{ if (or (eq .chezmoi.hostname "Atlas-login-1") (eq .chezmoi.hostname "Atlas-login-2")) }}
