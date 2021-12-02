@@ -2,3 +2,22 @@ tower {
   enabled = true
   accessToken = '{{ (bitwarden "item" "d41ac952-d8b5-4d20-a42a-ad8e0174d152").login.password }}'
 }
+{{ if (eq .cluster "scinet") }}
+process {
+  executor       = 'slurm'
+  clusterOptions = '--account=fabadru'
+  {{ if (or (eq .chezmoi.hostname "Atlas-login-1") (eq .chezmoi.hostname "Atlas-login-2")) }}
+    withLabel: process_high_memory {
+      queue      = 'bigmem'
+    }
+  {{ end }}
+  {{ if (eq .chezmoi.hostname "ceres") }}
+    withLabel: process_high_memory {
+      queue      = 'mem'
+    }
+    withLabel: process_long {
+      queue      = 'long'
+    }
+  {{ end }}
+}
+{{ end }}
