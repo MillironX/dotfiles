@@ -12,6 +12,8 @@
 	defaultBranch = master
 [github]
 	user = MillironX
+[pull]
+	rebase = false
 {{- if eq .chezmoi.osRelease.id "fedora" }}
 [diff]
 	tool = kdiff3
