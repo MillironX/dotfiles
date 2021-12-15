@@ -28,7 +28,7 @@ fi
 
 # Replace cat with bat
 if [ $(command -v bat) ]; then
-  export BAT_PAGER="less -RF"
+  export BAT_PAGER="less -SRF"
   export MANPAGER="sh -c 'col -bx | bat -l man -p'"
   export MANROFFOPT="-c"
 fi
