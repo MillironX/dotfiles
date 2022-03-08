@@ -2,75 +2,99 @@ tower {
   enabled = true
   accessToken = '{{ (bitwarden "item" "d41ac952-d8b5-4d20-a42a-ad8e0174d152").login.password }}'
 }
-{{ if (eq .cluster "scinet") }}
-params {
-  {{ if (eq .chezmoi.hostname "ceres") }}
-  max_memory = 768.GB
-  max_cpus   = 40
-  max_time   = 1000.h
-  {{ end }}
-  {{ if (or (eq .chezmoi.hostname "Atlas-login-1") (eq .chezmoi.hostname "Atlas-login-2")) }}
-  max_memory = 1539.GB
-  max_cpus   = 24
-  max_time   = 14.d
-  {{ end }}
-}
+profiles {
+  aahz {
+    params {
+      config_profile_description = 'KSU VDL Molecular NGS Big Server profile'
+      config_profile_contact     = 'Thomas A. Christensen II <25492070+MillironX@users.noreply.github.com>'
+      config_profile_url         = null
 
-process {
-  scratch        = true
-  executor       = 'slurm'
-  clusterOptions = '--account=fabadru'
-  {{ if (or (eq .chezmoi.hostname "Atlas-login-1") (eq .chezmoi.hostname "Atlas-login-2")) }}
-  cpus   = 12
-  memory = 192.GB
-  time   = 7.d
-  withLabel: process_high_memory {
-    queue      = 'bigmem'
-    memory     = 1536.GB
+      max_memory = 745.GB
+      max_cpus   = 78
+      max_time   = 7.d
+    }
+    singularity {
+      enabled      = true
+      autoMounts   = true
+      envWhitelist = 'NCBI_API_KEY'
+    }
+    process {
+      executor = 'local'
+    }
   }
-  withLabel: process_long {
-    time   = 14.d
+  atlas {
+    params {
+      config_profile_description = 'Mississippi State University Atlas Cluster profile'
+      config_profile_contact     = 'Thomas A. Christensen II <25492070+MillironX@users.noreply.github.com>'
+      config_profile_url         = 'https://www.hpc.msstate.edu/computing/atlas/'
+
+      max_memory = 1539.GB
+      max_cpus   = 24
+      max_time   = 14.d
+    }
+    singularity {
+      enabled      = true
+      autoMounts   = true
+      envWhitelist = 'NCBI_API_KEY'
+    }
+    process {
+      scratch        = true
+      executor       = 'slurm'
+      clusterOptions = '--account=fabadru'
+
+      withLabel: process_high_memory {
+        queue = 'bigmem'
+      }
+    }
   }
-  withLabel: process_medium {
-    cpus   = 12
-    memory = 192.GB
-    time   = 7.d
+  ceres {
+    params {
+      config_profile_description = 'USDA ARS SCInet Ceres Cluster profile'
+      config_profile_contact     = 'Thomas A. Christensen II <25492070+MillironX@users.noreply.github.com>'
+      config_profile_url         = 'https://scinet.usda.gov/guide/ceres/#partitions-or-queues'
+
+      max_memory = 768.GB
+      max_cpus   = 40
+      max_time   = 1000.h
+    }
+    singularity {
+      enabled      = true
+      autoMounts   = true
+      envWhitelist = 'NCBI_API_KEY'
+    }
+    process {
+      scratch  = true
+      executor = 'slurm'
+      queue    = 'short'
+
+      withLabel: process_high_memory {
+        queue = 'mem'
+      }
+      withLabel: process_long {
+        queue = 'long'
+      }
+      withLabel: process_medium {
+        queue = 'medium'
+      }
+    }
   }
-  withLabel: process_high {
-    cpus   = 24
-    memory = 384.GB
-    time   = 14.d
-  }
-  {{ end }}
-  {{ if (eq .chezmoi.hostname "ceres") }}
-  queue  = 'short'
-  cpus   = 18
-  memory = 54.GB
-  time   = 24.h
-  withLabel: process_high_memory {
-    queue  = 'mem'
-    memory = 640.GB
-  }
-  withLabel: process_long {
-    queue = 'long'
-    time  = 21.d
-  }
-  withLabel: process_medium {
-    queue = 'medium'
-    cpus  = 36
-    time  = 7.d
-  }
-  withLabel: process_high {
-    queue = 'long'
-    cpus  = 36
-    time  = 21.d
-  }
-  {{ end }}
-  withLabel: process_low {
-    cpus   = 2
-    memory = 4.GB
-    time   = 1.h
-    {{ if (eq .chezmoi.hostname "ceres") }}queue = 'short'{{ end }}
+  tananda {
+    params {
+      config_profile_description = 'KSU VDL Molecular NGS Desktop profile'
+      config_profile_contact     = 'Thomas A. Christensen II <25492070+MillironX@users.noreply.github.com>'
+      config_profile_url         = null
+
+      max_memory = 14.GB
+      max_cpus   = 12
+      max_time   = 4.h
+    }
+    docker {
+      enabled       = true
+      userEmulation = true
+      envWhitelist  = 'NCBI_API_KEY'
+    }
+    process {
+      executor = 'local'
+    }
   }
 }
-{{ end }}
