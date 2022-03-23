@@ -1,17 +1,6 @@
 # shellcheck shell=bash
 # .bashrc
 
-# shellcheck disable=1054,1073,1050,1072,1009
-{{ if (eq .chezmoi.osRelease.id "centos") }}
-{{ if (eq .chezmoi.osRelease.versionID "7") }}
-# Switch to zsh if interactive, and we haven't been told not to
-if [[ ($- == *i*) && ($SSH_TTY) && (-z $NO_ZSH) ]]; then
-  export SHELL=$(command -v zsh)
-  exec $SHELL -l
-fi
-{{ end }}
-{{ end }}
-
 if [ -f "$HOME/.modules" ]; then
   source $HOME/.modules
 fi
