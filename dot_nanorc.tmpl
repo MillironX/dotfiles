@@ -1,0 +1,15 @@
+{{- if eq .chezmoi.osRelease.id "fedora" }}
+set linenumbers
+set titlecolor bold,lightwhite,blue
+set promptcolor lightwhite,lightblack
+set statuscolor bold,lightwhite,green
+set errorcolor bold,lightwhite,red
+set spotlightcolor black,lime
+set selectedcolor lightwhite,magenta
+set stripecolor ,yellow
+set scrollercolor cyan
+set numbercolor lightwhite,lightblack
+set keycolor cyan
+set functioncolor green
+{{- end }}
+include ~/.nano/*.nanorc
