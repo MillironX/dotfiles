@@ -14,6 +14,8 @@
 	user = MillironX
 [pull]
 	rebase = false
+[commit]
+	gpgsign = true
 {{- if eq .chezmoi.osRelease.id "fedora" }}
 [diff]
 	tool = kdiff3
