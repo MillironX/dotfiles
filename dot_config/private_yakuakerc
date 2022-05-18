@@ -1,0 +1,16 @@
+[Desktop Entry]
+DefaultProfile=My Default.profile
+
+[Dialogs]
+FirstRun=false
+
+[Shortcuts]
+next-session=Shift+Right; Ctrl+Shift+Tab
+previous-terminal=none
+
+[Window]
+DynamicTabTitles=true
+Height=60
+Screen=1
+ShowSystrayIcon=false
+Width=60
