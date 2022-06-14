@@ -36,7 +36,7 @@ fi
 # Add notification support for long-running processes
 if [ $(command -v ntfy) ]; then
   eval "$(ntfy shell-integration --longer-than 30)"
-  export AUTO_NTFY_DONE_IGNORE="vim nano emacs kate zshconfig screen tmux ssh top htop less more most nethogs 'singularity shell' julia man"
+  export AUTO_NTFY_DONE_IGNORE="vim nano emacs kate zshconfig screen tmux ssh top htop less more most nethogs 'singularity shell' julia man glances"
 fi
 
 # Set the Nextflow enviroment caches
