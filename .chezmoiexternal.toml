@@ -2,6 +2,8 @@
     type = "archive"
     url = "https://github.com/scopatz/nanorc/archive/master.zip"
     refreshPeriod = "720h"
+    stripComponents = 1
+    include = ["*.nanorc"]
 
 [".local/share/fonts/meslolgs-nf-regular.ttf"]
     type = "file"
