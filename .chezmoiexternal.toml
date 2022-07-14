@@ -31,23 +31,23 @@
     url = "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf"
     refreshPeriod = "168h"
 
-[".local/share/fonts/fira-code-bold.ttf"]
-    type = "file"
-    url = "https://github.com/tonsky/FiraCode/releases/download/6.2/Fira_Code_v6.2.zip"
-    [".local/share/fonts/fira-code-bold.ttf".filter]
-        command = "unzip"
-        args = ["-p", "/dev/stdin", "ttf/FiraCode-Bold.ttf"]
+# [".local/share/fonts/fira-code-bold.ttf"]
+#     type = "file"
+#     url = "https://github.com/tonsky/FiraCode/releases/download/6.2/Fira_Code_v6.2.zip"
+#     [".local/share/fonts/fira-code-bold.ttf".filter]
+#         command = "unzip"
+#         args = ["-p", "/dev/stdin", "ttf/FiraCode-Bold.ttf"]
 
-[".local/share/fonts/fira-code-medium.ttf"]
-    type = "file"
-    url = "https://github.com/tonsky/FiraCode/releases/download/6.2/Fira_Code_v6.2.zip"
-    [".local/share/fonts/fira-code-medium.ttf".filter]
-        command = "unzip"
-        args = ["-p", "/dev/stdin", "ttf/FiraCode-Medium.ttf"]
+# [".local/share/fonts/fira-code-medium.ttf"]
+#     type = "file"
+#     url = "https://github.com/tonsky/FiraCode/releases/download/6.2/Fira_Code_v6.2.zip"
+#     [".local/share/fonts/fira-code-medium.ttf".filter]
+#         command = "unzip"
+#         args = ["-p", "/dev/stdin", "ttf/FiraCode-Medium.ttf"]
 
-[".local/share/fonts/fira-code-regular.ttf"]
-    type = "file"
-    url = "https://github.com/tonsky/FiraCode/releases/download/6.2/Fira_Code_v6.2.zip"
-    [".local/share/fonts/fira-code-regular.ttf".filter]
-        command = "unzip"
-        args = ["-p", "/dev/stdin", "ttf/FiraCode-Regular.ttf"]
+# [".local/share/fonts/fira-code-regular.ttf"]
+#     type = "file"
+#     url = "https://github.com/tonsky/FiraCode/releases/download/6.2/Fira_Code_v6.2.zip"
+#     [".local/share/fonts/fira-code-regular.ttf".filter]
+#         command = "unzip"
+#         args = ["-p", "/dev/stdin", "ttf/FiraCode-Regular.ttf"]
