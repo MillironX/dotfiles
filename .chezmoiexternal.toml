@@ -2,3 +2,23 @@
     type = "archive"
     url = "https://github.com/scopatz/nanorc/archive/master.zip"
     refreshPeriod = "720h"
+
+[".local/share/fonts/meslolgs-nf-regular.ttf"]
+    type = "file"
+    url = "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf"
+    refreshPeriod = "168h"
+
+[".local/share/fonts/meslolgs-nf-bold.ttf"]
+    type = "file"
+    url = "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf"
+    refreshPeriod = "168h"
+
+[".local/share/fonts/meslolgs-nf-italic.ttf"]
+    type = "file"
+    url = "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf"
+    refreshPeriod = "168h"
+
+[".local/share/fonts/meslolgs-nf-bold-italic.ttf"]
+    type = "file"
+    url = "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf"
+    refreshPeriod = "168h"
