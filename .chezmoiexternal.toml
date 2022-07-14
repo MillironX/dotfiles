@@ -1,4 +1,4 @@
 [".nano"]
     type = "archive"
     url = "https://github.com/scopatz/nanorc/archive/master.zip"
-    refreshPeriod = "30d"
+    refreshPeriod = "720h"
