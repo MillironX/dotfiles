@@ -1,7 +1,6 @@
 [".nano"]
     type = "archive"
-    url = "https://github.com/scopatz/nanorc/archive/master.zip"
-    refreshPeriod = "720h"
+    url = "https://github.com/scopatz/nanorc/releases/download/2020.10.10/nanorc-2020.10.10.tar.gz"
     stripComponents = 1
     include = ["*.nanorc"]
 
