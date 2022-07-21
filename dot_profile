@@ -2,6 +2,11 @@
 # User specific environment
 export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 
+# juliaup setup
+if [ -d $HOME/.julia/juliaup/bin ]; then
+  export PATH="$HOME/.julia/juliaup/bin:$PATH"
+fi
+
 # Linuxbrew setup
 if [ -d $HOME/../linuxbrew/.linuxbrew ]; then
   BREWPATH=$HOME/../linuxbrew/.linuxbrew
