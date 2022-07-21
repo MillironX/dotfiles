@@ -1,4 +1,8 @@
-{{- if (not (eq .cluster "scinet")) -}}
+{{- if or
+  (eq .machinetype "workstation")
+  (eq .chezmoi.osRelease.id "fedora")
+  (and (eq .chezmoi.osRelease.id "almalinux" "centos" "rhel") (gt (atoi .chezmoi.osRelease.versionID) 7))
+  (and (eq .chezmoi.osRelease.id "debian") (gt (atoi .chezmoi.osRelease.versionID) 9 )) -}}
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -6,10 +10,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 {{- end }}
-
-if [ -f "$HOME/.modules" ]; then
-  source $HOME/.modules
-fi
 
 # User specific environment
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
@@ -28,12 +28,7 @@ antigen use oh-my-zsh
 
 # Default bundles
 antigen bundle git
-antigen bundle gitignore
-antigen bundle colored-man-pages
-antigen bundle cp
 antigen bundle screen
-antigen bundle npm
-antigen bundle bundler
 antigen bundle extract
 
 # Custom bundles
@@ -41,30 +36,18 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle esc/conda-zsh-completion
-antigen bundle RobSis/zsh-completion-generator
 antigen bundle kloetzl/biozsh
 antigen bundle millironx/cowsay-cows
 
-DEFAULT_USER="$USER"
-
-# Theming: if I have a nerd fond, use it to the fullest extent possible
-# If not, check for basic powerline, then fall back to text-based
-# The presence of nerd fonts and/or powerline fonts will be designated
-# by the presence of a ".nf" and ".powerline" file in the home directory,
-# respectively
-source /etc/os-release
-if [[ -f "$HOME/.nf" ]]; then
-  # Nerd font config flag set
-  antigen theme romkatv/powerlevel10k
-else
-  if [[ -f "$HOME/.powerline" ]]; then
-    # Powerline config flag set
-    antigen theme https://gist.github.com/e95df0a0aa6d1721e85b905399971515.git believer
-  else
-    # Powerline config flag not set
-    antigen theme https://gist.github.com/efde5e8d507bd3e1e046198b69d579f8.git gianu-improved
-  fi
-fi
+{{ if or
+  (eq .machinetype "workstation")
+  (eq .chezmoi.osRelease.id "fedora")
+  (and (eq .chezmoi.osRelease.id "almalinux" "centos" "rhel") (gt (atoi .chezmoi.osRelease.versionID) 7))
+  (and (eq .chezmoi.osRelease.id "debian") (gt (atoi .chezmoi.osRelease.versionID) 9 )) -}}
+antigen theme romkatv/powerlevel10k
+{{- else -}}
+antigen theme https://gist.github.com/efde5e8d507bd3e1e046198b69d579f8.git gianu-improved
+{{- end }}
 
 # oh-my-zsh configuration settings
 HYPHEN_INSENSITIVE="true"
@@ -113,5 +96,11 @@ if [ $(command -v env_parallel.zsh) ]; then
   source $(which env_parallel.zsh)
 fi
 
+{{ if or
+  (eq .machinetype "workstation")
+  (eq .chezmoi.osRelease.id "fedora")
+  (and (eq .chezmoi.osRelease.id "almalinux" "centos" "rhel") (gt (atoi .chezmoi.osRelease.versionID) 7))
+  (and (eq .chezmoi.osRelease.id "debian") (gt (atoi .chezmoi.osRelease.versionID) 9 )) -}}
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+{{- end }}
