@@ -58,5 +58,8 @@ export SINGULARITY_CACHEDIR=/90daydata/shared/$USER/.singularity
 # Give Julia full CPU access
 export JULIA_NUM_THREADS=$(nproc)
 
+# Make Julia use preinstalled Git
+JULIA_PKG_USE_CLI_GIT=true
+
 # Make NCBI happy
 export NCBI_API_KEY='{{ (bitwarden "item" "7d42eba0-c256-4d3b-8d0e-adbf016a08f8").login.password }}'
