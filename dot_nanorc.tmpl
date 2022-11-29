@@ -1,4 +1,8 @@
-{{- if eq .chezmoi.osRelease.id "fedora" }}
+{{- if or
+  (eq .machinetype "workstation")
+  (eq .chezmoi.osRelease.id "fedora")
+  (and (eq .chezmoi.osRelease.id "almalinux" "centos" "rhel") (gt (atoi .chezmoi.osRelease.versionID) 7))
+  (and (eq .chezmoi.osRelease.id "debian") (gt (atoi .chezmoi.osRelease.versionID) 9 )) -}}
 set linenumbers
 set titlecolor bold,lightwhite,blue
 set promptcolor lightwhite,lightblack
