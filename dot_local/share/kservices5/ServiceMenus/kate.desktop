@@ -1,0 +1,12 @@
+[Desktop Entry]
+Actions=OpenWithKate
+Icon=kate
+ServiceTypes=KonqPopupMenu/Plugin
+MimeType=application/octet-stream;
+Type=Service
+X-KDE-Priority=TopLevel
+
+[Desktop Action OpenWithKate]
+Exec=kate -s master %u
+Icon=kate
+Name=Edit with Kate
