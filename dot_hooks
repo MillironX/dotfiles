@@ -8,3 +8,9 @@ if [ $(command -v n) ]; then
   export N_PREFIX=$HOME/.n
   export PATH="$HOME/.n/bin:$PATH"
 fi
+
+{{- if eq .machinetype "workstation" }}
+export GPG_TTY="$(tty)"
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+gpgconf --launch gpg-agent
+{{- end }}
