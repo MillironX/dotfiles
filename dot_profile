@@ -7,6 +7,19 @@ if [ -d $HOME/.julia/juliaup/bin ]; then
   export PATH="$HOME/.julia/juliaup/bin:$PATH"
 fi
 
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+case ":$PATH:" in
+  *:/home/millironx/.juliaup/bin:*)
+    ;;
+  *)
+    export PATH=/home/millironx/.juliaup/bin${PATH:+:${PATH}}
+    ;;
+esac
+# <<< juliaup initialize <<<
+
 # Linuxbrew setup
 if [ -d $HOME/../linuxbrew/.linuxbrew ]; then
   BREWPATH=$HOME/../linuxbrew/.linuxbrew
