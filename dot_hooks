@@ -9,6 +9,11 @@ if [ $(command -v n) ]; then
   export PATH="$HOME/.n/bin:$PATH"
 fi
 
+if [ -f $HOME/.ion/bin/ion ]; then
+  export PATH="$HOME/.ion/bin/ion:$PATH"
+  export FPATH=$HOME/.ion/completions:$FPATH"
+fi
+
 {{- if eq .machinetype "workstation" }}
 export GPG_TTY="$(tty)"
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
