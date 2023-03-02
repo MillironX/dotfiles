@@ -4,12 +4,14 @@ if [ $(command -v pipx) ]; then
 fi
 
 # Preferred editor for local and remote sessions
-if [ $(command -v nano) ]; then
+if [ $(command -v nvim) ]; then
+  export EDITOR=nvim
+elif [ $(command -v nano) ]; then
   export EDITOR=nano
-elif [ $(command -v emacs) ]; then
-  export EDITOR='emacs -nw'
 elif [ $(command -v vim) ]; then
   export EDITOR=vim
+elif [ $(command -v emacs) ]; then
+  export EDITOR='emacs -nw'
 fi
 
 if [ $(command -v kate) ]; then
