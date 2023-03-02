@@ -11,7 +11,7 @@ fi
 
 if [ -f $HOME/.ion/bin/ion ]; then
   export PATH="$HOME/.ion/bin/ion:$PATH"
-  export FPATH=$HOME/.ion/completions:$FPATH"
+  export FPATH="$HOME/.ion/completions:$FPATH"
 fi
 
 {{- if eq .machinetype "workstation" }}
