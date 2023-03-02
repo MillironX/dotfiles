@@ -14,9 +14,9 @@
 	user = MillironX
 [pull]
 	rebase = false
+{{- if eq .machinetype "workstation" }}
 [commit]
 	gpgsign = true
-{{- if eq .chezmoi.osRelease.id "fedora" }}
 [diff]
 	tool = kdiff3
 [merge]
