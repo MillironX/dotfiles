@@ -68,11 +68,6 @@ source $HOME/.envvar
 alias zshconfig="$EDITOR ~/.zshrc"
 source $HOME/.aliases
 
-# Import GNU parallel
-if [ $(command -v env_parallel.zsh) ]; then
-  source $(which env_parallel.zsh)
-fi
-
 {{ if or
   (eq .machinetype "workstation")
   (eq .chezmoi.osRelease.id "fedora")

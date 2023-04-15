@@ -26,6 +26,11 @@ if [ -f $HOME/.ion/bin/ion ]; then
   export FPATH="$HOME/.ion/completions:$FPATH"
 fi
 
+# Import GNU parallel
+if [ $(command -v env_parallel.$(basename $0)) ]; then
+  source $(which env_parallel.$(basename $0))
+fi
+
 {{- if eq .machinetype "workstation" }}
 export GPG_TTY="$(tty)"
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
