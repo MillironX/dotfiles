@@ -8,6 +8,9 @@ alias cat=bat
 {{- if lookPath "lsd" }}
 alias ls=lsd
 {{- end }}
+{{- if and (lookPath "codium") (not (lookPath "code")) }}
+alias code=codium
+{{- end }}
 
 # Universal aliases
 alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
