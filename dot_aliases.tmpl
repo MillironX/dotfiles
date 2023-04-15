@@ -1,22 +1,13 @@
-# Only create aliases if the underlying programs are available
-# This allows portability between machines in different states
-alias_if_exists () {
-  ALIAS=${1}
-  COMMAND=${2}
-  ARGS=${3}
-  if [ $(command -v $COMMAND) ]; then
-    if [ -n "$ARGS" ]; then
-      alias $ALIAS="$COMMAND $ARGS"
-    else
-      alias $ALIAS="$COMMAND"
-    fi
-  fi
-}
-
 # Context-sensitive aliases
-alias_if_exists bat batcat
-alias_if_exists cat bat
-alias_if_exists ls lsd
+{{- if lookPath "batcat" }}
+alias bat=batcat
+{{- end }}
+{{- if or (lookPath "bat") (lookPath "batcat") }}
+alias cat=bat
+{{- end }}
+{{- if lookPath "lsd" }}
+alias ls=lsd
+{{- end }}
 
 # Universal aliases
 alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
