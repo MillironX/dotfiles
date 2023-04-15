@@ -1,0 +1,9 @@
+[Desktop Entry]
+DefaultProfile=My Default.profile
+
+[MainWindow]
+StatusBar=Disabled
+ToolBarsMovable=Disabled
+
+[UiSettings]
+ColorScheme=Default

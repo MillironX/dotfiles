@@ -1,9 +1,3 @@
-[".nano"]
-    type = "archive"
-    url = "https://github.com/scopatz/nanorc/releases/download/2020.10.10/nanorc-2020.10.10.tar.gz"
-    stripComponents = 1
-    include = ["*/*.nanorc"]
-
 [".local/bin/n"]
     type = "file"
     url = "https://raw.githubusercontent.com/tj/n/master/bin/n"
