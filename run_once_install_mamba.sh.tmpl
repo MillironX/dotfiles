@@ -1,0 +1,12 @@
+#!/bin/bash
+{{ if eq .chezmoi.os "linux" }}
+{{ $mambaURL := print "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-pypy3-Linux-x86_64.sh" }}
+{{ if lookPath "wget" }}
+wget -qO- "{{ $mambaURL }}" > mamba.sh
+{{ else }}
+curl -L "{{ $mambaURL }}" > mamba.sh
+{{ end }}
+chmod +x mamba.sh
+./mamba.sh -b -u -p $HOME/miniconda3
+rm mamba.sh
+{{ end }}
