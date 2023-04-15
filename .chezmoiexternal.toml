@@ -1,9 +1,3 @@
-[".local/bin/n"]
-    type = "file"
-    url = "https://raw.githubusercontent.com/tj/n/master/bin/n"
-    executable = true
-    refreshPeriod = "168h"
-
 [".local/share/fonts/meslolgs-nf-regular.ttf"]
     type = "file"
     url = "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf"
