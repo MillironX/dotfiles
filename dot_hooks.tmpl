@@ -17,6 +17,10 @@ if [ -f "$HOME/miniconda3/etc/profile.d/mamba.sh" ]; then
 fi
 # <<< conda initialize <<<
 
+{{- if lookPath "direnv" }}
+eval "$(direnv hook $(basename $0))"
+{{- end }}
+
 if [ -f $HOME/.ion/bin/ion ]; then
   export PATH="$HOME/.ion/bin/ion:$PATH"
   export FPATH="$HOME/.ion/completions:$FPATH"

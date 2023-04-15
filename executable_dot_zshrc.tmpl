@@ -54,12 +54,6 @@ COMPLETION_WAITING_DOTS="true"
 
 source $HOME/.hooks
 
-# >>> direnv initalize >>>
-if [ $(command -v direnv) ]; then
-  eval "$(direnv hook zsh)"
-fi
-# <<< direnv initalize <<<
-
 # Tell Antigen that you're done
 antigen apply
 

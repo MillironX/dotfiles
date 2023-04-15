@@ -11,12 +11,6 @@ source $HOME/.hooks
 # User specific aliases and functions
 source $HOME/.aliases
 
-# >>> direnv initalize >>>
-if [ $(command -v direnv) ]; then
-  eval "$(direnv hook bash)"
-fi
-# <<< direnv initalize <<<
-
 source $HOME/.envvar
 
 if [ $(command -v env_parallel.bash) ]; then
