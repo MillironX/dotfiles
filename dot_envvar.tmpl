@@ -1,45 +1,38 @@
+{{- if lookPath "pipx" }}
 # Enable pipx completions
-if [ $(command -v pipx) ]; then
-  eval "$(register-python-argcomplete pipx)"
-fi
+eval "$(register-python-argcomplete pipx)"
+{{- end }}
 
+{{- if lookPath "nvim" }}
 # Preferred editor for local and remote sessions
-if [ $(command -v nvim) ]; then
-  export EDITOR=nvim
-elif [ $(command -v nano) ]; then
-  export EDITOR=nano
-elif [ $(command -v vim) ]; then
-  export EDITOR=vim
-elif [ $(command -v emacs) ]; then
-  export EDITOR='emacs -nw'
-fi
+export EDITOR=nvim
+{{- end }}
 
-if [ $(command -v kate) ]; then
-  export VISUAL=kate
-elif [ $(command -v code) ]; then
-  export VISUAL=code
-elif [ $(command -v emacs) ]; then
-  export VISUAL=emacs
-fi
+{{- if lookPath "kate" }}
+export VISUAL=kate
+{{- else if lookPath "codium" }}
+export VISUAL=codium
+{{- else if lookPath "code" }}
+export VISUAL=code
+{{- end }}
 
+{{- if lookPath "most" }}
 # Set a cool new pager with color support
-if [ $(command -v most) ]; then
-  export PAGER=most
-fi
+export PAGER=most
+{{- end }}
 
-
+{{- if or (lookPath "bat") (lookPath "catbat") }}
 # Replace cat with bat
-if [ $(command -v bat) ]; then
-  export BAT_PAGER="less -SRF"
-  export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-  export MANROFFOPT="-c"
-fi
+export BAT_PAGER="less -SRF"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT="-c"
+{{- end }}
 
 # Add notification support for long-running processes
-if [ $(command -v ntfy) ]; then
-  eval "$(ntfy shell-integration --longer-than 30)"
-  export AUTO_NTFY_DONE_IGNORE="vim nano emacs kate zshconfig screen tmux ssh top htop less more most nethogs 'singularity shell' julia man glances"
-fi
+{{- if lookPath "ntfy" }}
+eval "$(ntfy shell-integration --longer-than 30)"
+export AUTO_NTFY_DONE_IGNORE="vim nano emacs kate zshconfig screen tmux ssh top htop less more most nethogs 'singularity shell' julia man glances"
+{{- end }}
 
 # Set the Nextflow enviroment caches
 export NXF_HOME="$HOME/.nextflow"
