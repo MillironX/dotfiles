@@ -1,6 +1,8 @@
 set -g default-terminal "tmux-256color"
+{{- if eq .chezmoi.os "linux" }}
 {{ if (eq .chezmoi.osRelease.id "debian") }}
 source "/usr/share/powerline/bindings/tmux/powerline.conf"
 {{ else }}
 source "/usr/share/tmux/powerline.conf"
 {{ end }}
+{{- end }}
