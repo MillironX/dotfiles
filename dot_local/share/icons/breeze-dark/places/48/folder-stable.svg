@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+    The Breeze Icon Theme in icons/
+
+    Copyright (C) 2014 Uri Herrera <uri_herrera@nitrux.in> and others
+
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 3 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library. If not, see <http://www.gnu.org/licenses/>.
+
+    Clarification:
+
+    The GNU Lesser General Public License or LGPL is written for
+    software libraries in the first place. We expressly want the LGPL to
+    be valid for this artwork library too.
+
+    KDE Breeze theme icons is a special kind of software library, it is an
+    artwork library, it's elements can be used in a Graphical User Interface, or
+    GUI.
+
+    Source code, for this library means:
+        - where they exist, SVG;
+        - otherwise, if applicable, the multi-layered formats xcf or psd, or
+    otherwise png.
+
+    The LGPL in some sections obliges you to make the files carry
+    notices. With images this is in some cases impossible or hardly useful.
+
+    With this library a notice is placed at a prominent place in the directory
+    containing the elements. You may follow this practice.
+
+    The exception in section 5 of the GNU Lesser General Public License covers
+    the use of elements of this art library in a GUI.
+
+    https://vdesign.kde.org/
+-->
+<!--
+    BSD License
+
+    Copyright© 2013, Mapbox, LLC. All rights reserved.
+
+    Redistribution and use in source and binary forms, with or without modification,
+    are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright notice, this
+    list of conditions and the following disclaimer.
+
+    * Redistributions in binary form must reproduce the above copyright notice, this
+    list of conditions and the following disclaimer in the documentation and/or
+    other materials provided with the distribution.
+
+    * Neither the name of the Mapbox, LLC. nor the names of its
+    contributors may be used to endorse or promote products derived from this
+    software without specific prior written permission.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+    ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+    WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+    DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+    ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+    (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+    ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+    (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+<svg
+   viewBox="0 0 48 48"
+   version="1.1"
+   id="svg1569"
+   xml:space="preserve"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+     id="defs3051"><style
+       type="text/css"
+       id="current-color-scheme">
+      .ColorScheme-Text {
+        color:#31363b;
+      }
+      .ColorScheme-Highlight {
+        color:#3daee9;
+      }
+      </style></defs><path
+     style="fill:currentColor;fill-opacity:1;stroke:none"
+     d="M 5,6 V 16 H 4 V 42 H 44 V 13 H 43 V 9 H 24 L 21,6 Z"
+     class="ColorScheme-Highlight"
+     id="path1559" /><path
+     style="fill-opacity:0.33;fill-rule:evenodd"
+     d="m 5,6 v 10 h 12 l 3,-3 H 43 V 9 H 24 L 21,6 Z"
+     id="path1561" /><path
+     style="fill:#ffffff;fill-opacity:0.2;fill-rule:evenodd"
+     d="M 21 6 L 23 10 L 43 10 L 43 9 L 24 9 L 21 6 z M 20 13 L 17 16 L 4 16 L 4 17 L 18 17 L 20 13 z "
+     id="path1563" /><path
+     style="fill-opacity:0.2;fill-rule:evenodd"
+     d="M 20 13 L 16 15 L 5 15 L 5 16 L 17 16 L 20 13 z M 4 41 L 4 42 C 4 42 44 42 44 42 L 44 41 L 4 41 z "
+     class="ColorScheme-Text"
+     id="path1565" /><g
+     id="g1748"
+     transform="translate(13.5,15.015267)"
+     style="fill:#356680;fill-opacity:1">
+	<polygon
+   points="4,20 4,8 2,9 2,22 21,22 21,20 "
+   id="polygon1742"
+   style="fill:#356680;fill-opacity:1" />
+	<polygon
+   points="0,8 0,9.5 21,1.5 21,0 "
+   id="polygon1744"
+   style="fill:#356680;fill-opacity:1" />
+	<polygon
+   points="7,14 7,12 8,12 8,13 7,15 7,19 8,19 8,15 9,15 10,19 11,19 10,14 14,14 14,19 15,19 15,13 18,9 20,10 20,9 18,7 18,6 14,10 7,10 7,11 6,11 6,14 "
+   id="polygon1746"
+   style="fill:#356680;fill-opacity:1" />
+</g></svg>

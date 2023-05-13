@@ -2,8 +2,12 @@ Host *
 	IdentitiesOnly yes
 	IdentityFile {{ if and (eq .machinetype "workstation") (ne .chezmoi.os "windows") }}~/.ssh/id_rsa_yubikey.pub{{ else }}~/.ssh/id_ed25519{{ end }}
 
+Host anderson
+	HostName anderson.millironx.com
+	User millironx
+
 Host aahz
-	HostName 129.130.108.37
+	HostName nistac-108-37.dhcp.ksu.edu
 	User tchristensen
 
 Host skeeve
