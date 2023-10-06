@@ -52,6 +52,9 @@ antigen theme https://gist.github.com/efde5e8d507bd3e1e046198b69d579f8.git gianu
 HYPHEN_INSENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
 
+alias zshconfig="$EDITOR ~/.zshrc"
+source $HOME/.aliases
+
 source $HOME/.hooks
 
 # Tell Antigen that you're done
@@ -65,8 +68,6 @@ bashcompinit
 
 source $HOME/.envvar
 
-alias zshconfig="$EDITOR ~/.zshrc"
-source $HOME/.aliases
 
 {{- if eq .chezmoi.os "linux" }}
 {{ if or
