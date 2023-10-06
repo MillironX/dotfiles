@@ -1,5 +1,5 @@
 export SH=zsh
-{{- if eq .chezmoi.os "linux" }}
+{{ if or (eq .chezmoi.os "linux") (eq .chezmoi.os "darwin") }}
 {{- if or
   (eq .machinetype "workstation")
   (eq .chezmoi.osRelease.id "fedora")
@@ -69,7 +69,7 @@ bashcompinit
 source $HOME/.envvar
 
 
-{{- if eq .chezmoi.os "linux" }}
+{{ if or (eq .chezmoi.os "linux") (eq .chezmoi.os "darwin") }}
 {{ if or
   (eq .machinetype "workstation")
   (eq .chezmoi.osRelease.id "fedora")
