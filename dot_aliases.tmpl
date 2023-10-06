@@ -12,6 +12,11 @@ alias ls=lsd
 alias code=codium
 {{- end }}
 
+# Platform-specific aliases
+{{- if eq .chezmoi.os "darwin" }}
+alias nproc='sysctl -n hw.logicalcpu'
+{{- end }}
+
 # Universal aliases
 alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias please='sudo $(fc -ln -1)'
